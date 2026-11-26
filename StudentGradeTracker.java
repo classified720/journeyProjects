@@ -107,6 +107,7 @@ public class StudentGradeTracker {
         System.out.printf("The average of all the scores is: %.2f\n",average(scores,students.size()));
         System.out.printf("The highest score is: %d\n",highest(scores, students.size()));
         System.out.printf("The lowest score is: %d\n",lowest(scores, students.size()));
+        gradeCounts(students, scores);
     }
     public static double average(int[] scores, int count){
         int sum =0 ;
@@ -136,6 +137,33 @@ public class StudentGradeTracker {
         }
         return lowest;
     }
+    public static void gradeCounts(ArrayList<String> students, int[] scores){
+        int [] counts = new int[6];
+        for(int i=0; i< students.size(); i++){
+            String letter = letterGrade(scores[i]);
+                if (letter.equals("A")){
+                    counts[0]++;
+                }
+                if (letter.equals("B")){
+                    counts[1]++;
+                }
+                if (letter.equals("C")){
+                    counts[2]++;
+                }
+                if (letter.equals("D")){
+                    counts[3]++;
+                }
+                if (letter.equals("E")){
+                    counts[4]++;
+                }
+                if (letter.equals("F")){
+                    counts[5]++;
+                }
+                
+        }
+        System.out.printf("A: %d\n",counts[0]);
+    }
+    
+}
     
 
-}

@@ -32,7 +32,7 @@ public class StudentGradeTracker {
                 ShowAll(scanner, students, scores);
 
             }else if(choice == 3){
-                System.out.println("wait");
+                showAllStats(students, scores);
 
             }else{
                 System.out.println("Invalid Choice!");
@@ -101,8 +101,41 @@ public class StudentGradeTracker {
         else{
             return "F";
         }
-            
+    }
+    public static void showAllStats(ArrayList<String> students, int[] scores){
+        System.out.println();
+        System.out.printf("The average of all the scores is: %.2f\n",average(scores,students.size()));
+        System.out.printf("The highest score is: %d\n",highest(scores, students.size()));
+        System.out.printf("The lowest score is: %d\n",lowest(scores, students.size()));
+    }
+    public static double average(int[] scores, int count){
+        int sum =0 ;
+        for(int i=0; i< count;i++){
+            sum+= scores[i];
+
+        }
+        double average = (double) sum / count;
+        return average;
 
     }
+    public static int highest(int[] scores, int count){
+        int highest = scores[0];
+        for(int i =0; i < count;i++){
+            if(scores[i]> highest){
+                highest = scores[i];
+            }
+        }
+        return highest;
+    }
+    public static int lowest(int[] scores, int count){
+        int lowest = scores[0];
+        for(int i =0; i < count;i++){
+            if(scores[i]< lowest){
+                lowest = scores[i];
+            }
+        }
+        return lowest;
+    }
+    
 
 }

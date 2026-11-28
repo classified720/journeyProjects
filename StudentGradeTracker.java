@@ -12,7 +12,7 @@ public class StudentGradeTracker {
         Scanner scanner = new Scanner(System.in);
         ArrayList<String> students = new ArrayList<>();
         int [] scores = new int[30];
-        String[] options = {"1.Add student","2.Show all", "3.Show stats","4.Quit"};
+        String[] options = {"1.Add student","2.Show all", "3.Show stats", "4.Search", "5.Quit"};
 
         while(true){
 
@@ -26,7 +26,7 @@ public class StudentGradeTracker {
             System.out.print("Enter a choice: ");
             int choice = Integer.valueOf(scanner.nextLine());
 
-            if (choice == 4){
+            if (choice == 5){
                 break;
 
             }else if(choice == 1){
@@ -38,8 +38,12 @@ public class StudentGradeTracker {
             }else if(choice == 3){
                 showAllStats(students, scores);
 
+            }
+            else if(choice == 4){
+                search(scanner, students, scores);
+
             }else{
-                System.out.println("Invalid Choice!");
+                search(scanner, students, scores);
             }
         }
         scanner.close();
@@ -170,6 +174,35 @@ public class StudentGradeTracker {
                 System.out.print("*");
             }
             System.out.println();
+        }
+    }
+    public static void search(Scanner scanner, ArrayList<String> students, int[] scores){
+
+        while (true) {
+            System.out.print("Enter the name to search (done to stop search): \n");
+            String name = scanner.nextLine();
+            System.out.println();
+            boolean found = false;
+            if (name.equalsIgnoreCase("done")) {
+                    break;
+            }
+            if (name.isEmpty()) {
+                System.out.println("Please type a name!");
+                continue;
+            }
+            for(int i=0;i<students.size();i++){
+                
+                if (students.get(i).toLowerCase().contains(name.toLowerCase())) {
+                    System.out.println(students.get(i)+": " + scores[i]);
+                    System.out.println();
+                    found=true;
+                }
+            }
+            if (!found) {
+                System.out.println("NOT FOUND");
+                System.out.println();
+            }
+            
         }
     }
     

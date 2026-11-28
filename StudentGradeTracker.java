@@ -12,13 +12,17 @@ public class StudentGradeTracker {
         Scanner scanner = new Scanner(System.in);
         ArrayList<String> students = new ArrayList<>();
         int [] scores = new int[30];
-        String[] marks = {"1.Add student","2.Show all", "3.Show stats","4.Quit"};
+        String[] options = {"1.Add student","2.Show all", "3.Show stats","4.Quit"};
 
         while(true){
 
-            for(int i=0; i<marks.length; i++){
-                System.out.println(marks[i]);
+            System.out.println("----------------------------------------");
+            System.out.println("HERE IS THE MENU:");
+
+            for(int i=0; i<options.length; i++){
+                System.out.println(options[i]);
             }
+            System.out.println("----------------------------------------");
             System.out.print("Enter a choice: ");
             int choice = Integer.valueOf(scanner.nextLine());
 
@@ -139,29 +143,34 @@ public class StudentGradeTracker {
     }
     public static void gradeCounts(ArrayList<String> students, int[] scores){
         int [] counts = new int[6];
+        String[] grades = {"A", "B", "C", "D", "E", "F"};
         for(int i=0; i< students.size(); i++){
             String letter = letterGrade(scores[i]);
                 if (letter.equals("A")){
                     counts[0]++;
-                }
-                if (letter.equals("B")){
+                }else if (letter.equals("B")){
                     counts[1]++;
-                }
-                if (letter.equals("C")){
+                }else if (letter.equals("C")){
                     counts[2]++;
-                }
-                if (letter.equals("D")){
+                }else if (letter.equals("D")){
                     counts[3]++;
-                }
-                if (letter.equals("E")){
+                }else if (letter.equals("E")){
                     counts[4]++;
-                }
-                if (letter.equals("F")){
+                }else if (letter.equals("F")){
                     counts[5]++;
                 }
                 
         }
-        System.out.printf("A: %d\n",counts[0]);
+        System.out.println();
+        System.out.println("The grade count are:");
+
+        for(int i=0; i<counts.length;i++){
+            System.out.print(grades[i]+ ": ");
+            for(int j=0; j<counts[i];j++){
+                System.out.print("*");
+            }
+            System.out.println();
+        }
     }
     
 }
